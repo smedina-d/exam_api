@@ -21,7 +21,7 @@ class CashierController extends Controller
             "date_open" => "2019/06/11",
             "hour_open" => "12:45",
             "value_previous_close" => 7777,
-            "value_open" => null,
+            "value_open" => 3,
             "observation" => ""
         ];
 
