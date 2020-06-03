@@ -61,10 +61,11 @@ class CashierController extends Controller
     {
 
         $data['msg'] = 'Success';
-        $data['results'] = true;
-        $data['value']  = 5000;
-        $data['close']  = 0;
-        $data['card']   = 0;
+        $data['results'] = [
+          'value'   => 5000,
+          'close'   => 0,
+          'card'    => 0
+        ];
 
         return Response()->json($data,200);
     }
