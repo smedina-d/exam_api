@@ -20,7 +20,7 @@ class CashierController extends Controller
         $resp['results'] = [
             "date_open" => "2019/06/11",
             "hour_open" => "12:45",
-            "value_previous_close" => 6280,
+            "value_previous_close" => 7777,
             "value_open" => null,
             "observation" => ""
         ];
