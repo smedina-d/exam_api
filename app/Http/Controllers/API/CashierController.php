@@ -62,8 +62,8 @@ class CashierController extends Controller
 
         $data['msg'] = 'Success';
         $data['results'] = [
-            'date_close'    => DateTime::createFromFormat('Y-m-d H:i:s',\Carbon\Carbon::now('America/Mexico_City'))->format('Y/m/d'),
-            'hour_close'    => DateTime::createFromFormat('Y-m-d H:i:s',\Carbon\Carbon::now('America/Mexico_City'))->format('H:i'),
+            'date_close'    => "2020-05-02",
+            'hour_close'    => "19:25",
             'value_cash'    => 0,
             'value_card'    => 0,
             'value_transfer'    => 0,
