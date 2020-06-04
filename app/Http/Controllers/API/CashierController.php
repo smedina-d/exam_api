@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\OpenDay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,25 +17,27 @@ class CashierController extends Controller
 
     public function cashierBalance(Request $request)
     {
+        $open =  OpenDay::where('cashier_id',$request->get('caja'))->get();
+        
         if($request->get('caja') == 1) {
             $resp['status'] = 'Success';
             $resp['results'] = [
-                "date_open" => "2019/06/11",
-                "hour_open" => "12:45",
-                "value_previous_close" => 7777,
-                "value_open" => null,
-                "observation" => ""
+                "date_open" => $open->date_open,
+                "hour_open" => $open->hour_open,
+                "value_previous_close" => $open->value_previous_close,
+                "value_open" => $open->value_open,
+                "observation" => $open->observation
             ];
 
             return Response()->json($resp,200);
         } else {
             $resp['status'] = 'Success';
             $resp['results'] = [
-                "date_open" => "2019/06/11",
-                "hour_open" => "12:45",
-                "value_previous_close" => 7777,
-                "value_open" => 3,
-                "observation" => ""
+                "date_open" => $open->date_open,
+                "hour_open" => $open->hour_open,
+                "value_previous_close" => $open->value_previous_close,
+                "value_open" => $open->value_open,
+                "observation" => $open->observation
             ];
 
             return Response()->json($resp,200);
