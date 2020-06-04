@@ -76,8 +76,6 @@ class CashierController extends Controller
         $validator = Validator::make($request->all(), [
             'date_close' => 'required',
             'hour_close' => 'required',
-            'value_close' => 'required',
-            'value_open' => 'required'
         ]);
 
 
@@ -85,12 +83,25 @@ class CashierController extends Controller
             return Response()->json('Validation Error: '.$validator->errors(),404);
         }
 
-        $close =  CloseDay::create([
+        $datos = $request->all();
 
+        $close =  CloseDay::create([
+            'cashier_id' => 2,
+            'date_close' => $datos['date_close'],
+            'hour_close' => $datos['hour_close'],
+            'value_card' => $datos['value_card'],
+            'value_cash' => $datos['value_cash'],
+            'value_transfer' => $datos['value_transfer'],
+            'other_value' => $datos['other_value'],
+            'sales_total' => $datos['sales_total'],
+            'total_cashier' => $datos['total_cashier'],
+            'total_open' => $datos['total_open'],
+            'tip_card' => $datos['tip_card'],
+            'tip_cash' => $datos['tip_cash'],
         ]);
 
         $resp['msg'] = 'Información guardada con éxito';
-        $resp['results'] = null;
+        $resp['results'] = 1;
 
         return Response()->json($resp,200);
 
