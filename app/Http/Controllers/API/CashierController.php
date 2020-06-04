@@ -85,7 +85,8 @@ class CashierController extends Controller
             'sales_total'   => 0,
             'tip_cash'      => 0,
             'total_open'    => 0,
-            'tip_card'      => 0
+            'tip_card'      => 0,
+            'total_cashier' => 0
         ];
 
         return Response()->json($data,200);
