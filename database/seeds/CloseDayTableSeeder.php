@@ -11,7 +11,7 @@ class CloseDayTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('open_days')->insert([
+        DB::table('close_days')->insert([
             'cashier_id' => 1,
             'date_close' => DateTime::createFromFormat('Y-m-d H:i:s',\Carbon\Carbon::now('America/Mexico_City'))->format('Y/m/d'),
             'hour_close' => DateTime::createFromFormat('Y-m-d H:i:s',\Carbon\Carbon::now('America/Mexico_City'))->format('H:i'),
@@ -21,7 +21,7 @@ class CloseDayTableSeeder extends Seeder
             'value_open' => 0,
             'value_sales' => 0,
         ]);
-        DB::table('open_days')->insert([
+        DB::table('close_days')->insert([
             'cashier_id' => 2,
             'date_close' => DateTime::createFromFormat('Y-m-d H:i:s',\Carbon\Carbon::now('America/Mexico_City'))->format('Y/m/d'),
             'hour_close' => DateTime::createFromFormat('Y-m-d H:i:s',\Carbon\Carbon::now('America/Mexico_City'))->format('H:i'),
