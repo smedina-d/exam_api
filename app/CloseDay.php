@@ -13,9 +13,12 @@ class CloseDay extends Model
         'hour_close',
         'value_card',
         'value_cash',
-        'value_close',
-        'value_open',
-        'value_sales',
-        'expenses'
+        'value_transfer',
+        'other_value',
+        'sales_total',
+        'total_cashier',
+        'total_open',
+        'tip_card',
+        'tip_cash',
     ];
 }

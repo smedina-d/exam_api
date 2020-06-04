@@ -85,6 +85,10 @@ class CashierController extends Controller
             return Response()->json('Validation Error: '.$validator->errors(),404);
         }
 
+        $close =  CloseDay::create([
+
+        ]);
+
         $resp['msg'] = 'Información guardada con éxito';
         $resp['results'] = null;
 

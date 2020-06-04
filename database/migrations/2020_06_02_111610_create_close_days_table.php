@@ -20,10 +20,13 @@ class CreateCloseDaysTable extends Migration
             $table->string('hour_close')->nullable();
             $table->bigInteger('value_card')->default(0);
             $table->bigInteger('value_cash')->default(0);
-            $table->bigInteger('value_close')->default(0);
-            $table->bigInteger('value_open')->default(0);
-            $table->bigInteger('value_sales')->default(0);
-            $table->longText('expenses')->nullable();
+            $table->bigInteger('value_transfer')->default(0);
+            $table->bigInteger('other_value')->default(0);
+            $table->bigInteger('sales_total')->default(0);
+            $table->bigInteger('total_cashier')->default(0);
+            $table->bigInteger('total_open')->default(0);
+            $table->bigInteger('tip_card')->default(0);
+            $table->bigInteger('tip_cash')->default(0);
             $table->timestamps();
         });
     }
