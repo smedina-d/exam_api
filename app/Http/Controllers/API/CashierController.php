@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\CloseDay;
 use App\Http\Controllers\Controller;
 use App\OpenDay;
 use Illuminate\Http\Request;
@@ -17,11 +18,11 @@ class CashierController extends Controller
 
     public function cashierBalance(Request $request)
     {
-        $open =  OpenDay::where('cashier_id',$request->get('caja'))->first();
+        $open =  OpenDay::where('cashier_id',$request->get('caja'))->orderBy('id','desc')->first();
 
         $resp['status'] = 'Success';
         $resp['results'] = $open;
-        
+
         return response()->json($resp,200);
 
 
@@ -42,37 +43,29 @@ class CashierController extends Controller
             return Response()->json('Validation Error: '.$validator->errors(),404);
         }
 
+        $open =  OpenDay::create([
+            "date_open" => $request->date_open,
+            "hour_open" => $request->hour_open,
+            "value_previous_close" => $request->value_previous_close,
+            "value_open" => $request->value_open,
+            "observation" => $request->observation
+        ]);
+
+        $open =  OpenDay::orderBy('id','desc')->first();
 
         $resp['msg'] = 'Información guardada con éxito';
-        $resp['results'] = [
-            "date_open" => "2019/06/11",
-            "hour_open" => "12:45",
-            "value_previous_close" => 6280,
-            "value_open" => null,
-            "observation" => ""
-        ];
+        $resp['results'] = $open;
 
         return Response()->json($resp,200);
 
     }
 
-    public function hasOpenCashierBalance()
+    public function hasOpenCashierBalance(Request $request)
     {
+        $close =  CloseDay::where('cashier_id',$request->get('caja'))->orderBy('id','desc')->first();
 
         $data['msg'] = 'Success';
-        $data['results'] = [
-            'date_close'    => "2020-05-02",
-            'hour_close'    => "19:25",
-            'value_cash'    => 0,
-            'value_card'    => 0,
-            'value_transfer'    => 0,
-            'other_value'   => 0,
-            'sales_total'   => 0,
-            'tip_cash'      => 0,
-            'total_open'    => 0,
-            'tip_card'      => 0,
-            'total_cashier' => 0
-        ];
+        $data['results'] = $close;
 
         return Response()->json($data,200);
     }
