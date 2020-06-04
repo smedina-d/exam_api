@@ -14,18 +14,33 @@ class CashierController extends Controller
 
     }
 
-    public function cashierBalance()
+    public function cashierBalance(Request $request)
     {
-        $resp['status'] = 'Success';
-        $resp['results'] = [
-            "date_open" => "2019/06/11",
-            "hour_open" => "12:45",
-            "value_previous_close" => 7777,
-            "value_open" => 3,
-            "observation" => ""
-        ];
+return $request->get('caja');
+        if($request->get('caja') == 1) {
+            $resp['status'] = 'Success';
+            $resp['results'] = [
+                "date_open" => "2019/06/11",
+                "hour_open" => "12:45",
+                "value_previous_close" => 7777,
+                "value_open" => null,
+                "observation" => ""
+            ];
 
-        return Response()->json($resp,200);
+            return Response()->json($resp,200);
+        } else {
+            $resp['status'] = 'Success';
+            $resp['results'] = [
+                "date_open" => "2019/06/11",
+                "hour_open" => "12:45",
+                "value_previous_close" => 7777,
+                "value_open" => 3,
+                "observation" => ""
+            ];
+
+            return Response()->json($resp,200);
+        }
+
     }
 
     public function cashierBalanceOpenDay(Request $request)
