@@ -16,7 +16,6 @@ class CashierController extends Controller
 
     public function cashierBalance(Request $request)
     {
-return $request->get('caja');
         if($request->get('caja') == 1) {
             $resp['status'] = 'Success';
             $resp['results'] = [
