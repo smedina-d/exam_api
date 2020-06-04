@@ -18,11 +18,11 @@ class CashierController extends Controller
     public function cashierBalance(Request $request)
     {
         $open =  OpenDay::where('cashier_id',$request->get('caja'))->get();
-        
+
         if($request->get('caja') == 1) {
             $resp['status'] = 'Success';
             $resp['results'] = [
-                "date_open" => $open->date_open,
+                "date_open" => $open['date_open'],
                 "hour_open" => $open->hour_open,
                 "value_previous_close" => $open->value_previous_close,
                 "value_open" => $open->value_open,
